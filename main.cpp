@@ -1,7 +1,6 @@
+#include "include/renderer.h"
 #include <GLFW/glfw3.h>
 #include <iostream>
-#include "include/shader.h"
-#include "include/renderer.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window,int width,int height);
 void processInput(GLFWwindow *window);
@@ -20,7 +19,7 @@ int main(void)
     // glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
     glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
     /* Create a windowed mode window and its OpenGL context */
@@ -40,6 +39,10 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    // glad: load all OpenGL function pointers
+    int version = gladLoadGL(glfwGetProcAddress);
+    printf("GL %d.%d\n", GLAD_VERSION_MAJOR(version), GLAD_VERSION_MINOR(version));
+
     glClearColor( 0.4f, 0.3f, 0.4f, 0.0f );
 
     Renderer* renderer = new Renderer();
