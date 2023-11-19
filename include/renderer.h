@@ -1,8 +1,8 @@
 #ifndef _RENDERER_H_
 #define _RENDERER_H_
 
-#include "../glad/include/glad/gl.h"
-#include "../glfw/include/GLFW/glfw3.h"
+#include <glad/gl.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 
 class Renderer
